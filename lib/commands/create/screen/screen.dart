@@ -1,9 +1,11 @@
 import 'package:get_cli/commands/create/create.dart';
 import 'package:get_cli/common/utils/logger/logger.dart';
 import 'package:get_cli/core/command.dart';
+import 'package:get_cli/core/utils/export.utils.dart';
 import 'package:recase/recase.dart';
 
 import '../../../get_cli.dart';
+import 'samples/get_controller.dart';
 import 'samples/get_screen.dart';
 
 class CreateScreenCommand extends Command with CreateMixin {
@@ -13,16 +15,30 @@ class CreateScreenCommand extends Command with CreateMixin {
     var split = GetCli.arguments[1].split(':');
     var hasScreenName = split.length == 2;
     if (hasScreenName) {
-      var baseFolderPresentation = 'lib/presentation';
-      var controllerDir = './controllers/${name.snakeCase}.controller.dart';
-      var screenDir =
-          '$baseFolderPresentation/${name.snakeCase}/${name.snakeCase}.screen.dart';
+      var baseFolderPresentation = 'lib/presentation/${name.snakeCase}';
+
+      var screenName = '${name.pascalCase}Screen';
+      var controllerName = '${name.pascalCase}Controller';
+
+      var screenDir = '$baseFolderPresentation/${name.snakeCase}.screen.dart';
+      var controllerDir =
+          '$baseFolderPresentation/controllers/${name.snakeCase}.controller.dart';
 
       await GetScreenSample(
         screenDir: '$screenDir',
-        screenName: '${name.pascalCase}Screen',
-        controllerDir: '$controllerDir',
-        controllerName: '${name.pascalCase}Controller',
+        screenName: screenName,
+        controllerImport: './controllers/${name.snakeCase}.controller.dart',
+        controllerName: controllerName,
+      ).create();
+
+      await ExportUtils.addExport(
+        path: 'lib/presentation/screens.dart',
+        line: 'export \'./${name.snakeCase}/${name.snakeCase}.screen.dart\';',
+      );
+
+      await ControllerSample(
+        path: controllerDir,
+        fileName: controllerName,
       ).create();
     } else {
       LogService.error(

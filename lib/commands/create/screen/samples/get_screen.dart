@@ -3,18 +3,19 @@ import 'package:meta/meta.dart';
 
 class GetScreenSample extends Sample {
   String _screenDir;
-  String _controllerName;
-  String _controllerDir;
   String _screenName;
+  String _controllerName;
+  String _controllerImport;
+
   GetScreenSample({
     @required String screenName,
     @required String screenDir,
     @required String controllerName,
-    @required String controllerDir,
+    @required String controllerImport,
   }) {
     _screenDir = screenDir;
     _controllerName = controllerName;
-    _controllerDir = controllerDir;
+    _controllerImport = controllerImport;
     _screenName = screenName;
   }
 
@@ -25,7 +26,7 @@ class GetScreenSample extends Sample {
     return '''import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '${_controllerDir}';
+import '${_controllerImport}';
 
 class $_screenName extends $_controller {
   @override

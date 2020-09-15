@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "debug get_cli_api",
+            "request": "launch",
+            "cwd": "./",
+            "type": "dart",
+            "program": "bin/get_cli.dart",
+            "args": [
+                "create",
+                "screen:Perfil Usuario"
+            ],
+            "console": "debugConsole",
+        }
+    ]
+}

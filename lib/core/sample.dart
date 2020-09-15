@@ -8,7 +8,7 @@ abstract class Sample {
   String get path;
 
   /// content of file
-  Future<String> get content;
+  String get content;
 
   /// overwrite file
   bool get overwrite;
@@ -18,7 +18,7 @@ abstract class Sample {
     File file = await File(replaceAsExpected(path: path));
     if (!await file.exists() || overwrite) {
       await file.create(recursive: true);
-      await file.writeAsString(await content);
+      await file.writeAsString(content);
       LogService.success(basename(path) + ' created');
     }
   }

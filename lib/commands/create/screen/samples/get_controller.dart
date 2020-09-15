@@ -10,7 +10,7 @@ class ControllerSample extends Sample {
   }
 
   @override
-  Future<String> get content async => '''import 'package:get/get.dart';
+  String get content => '''import 'package:get/get.dart';
 
 class $_fileName extends GetxController {
   //TODO: Implement $_fileName

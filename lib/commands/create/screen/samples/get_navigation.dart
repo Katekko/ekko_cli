@@ -2,7 +2,7 @@ import 'package:get_cli/core/sample.dart';
 
 class NavigationSample extends Sample {
   @override
-  Future<String> get content async => '''import 'package:flutter/material.dart';
+  String get content => '''import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../config.dart';

@@ -8,7 +8,7 @@ class RouteSample extends Sample {
   }
 
   @override
-  Future<String> get content async => '''
+  String get content => '''
 class Routes {
   static Future<String> get initialRoute async {
     return $_initial;

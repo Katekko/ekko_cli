@@ -22,7 +22,7 @@ class GetScreenSample extends Sample {
   String get _controller => 'GetView<$_controllerName>';
 
   @override
-  Future<String> get content async {
+  String get content {
     return '''import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

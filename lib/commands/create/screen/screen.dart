@@ -6,6 +6,7 @@ import 'package:recase/recase.dart';
 import '../../../get_cli.dart';
 import 'functions/add_export.dart';
 import 'functions/add_route.dart';
+import 'samples/get_binding.dart';
 import 'samples/get_controller.dart';
 import 'samples/get_screen.dart';
 
@@ -20,10 +21,13 @@ class CreateScreenCommand extends Command with CreateMixin {
 
       var screenName = '${name.pascalCase}Screen';
       var controllerName = '${name.pascalCase}Controller';
+      var controllerBindingName = '${name.pascalCase}ControllerBinding';
 
       var screenDir = '$baseFolderPresentation/${name.snakeCase}.screen.dart';
       var controllerDir =
           '$baseFolderPresentation/controllers/${name.snakeCase}.controller.dart';
+      var controllerBindingDir =
+          'lib/infrastructure/navigation/bindings/controllers/${name.snakeCase}.controller.binding.dart';
 
       await GetScreenSample(
         screenDir: '$screenDir',
@@ -43,6 +47,14 @@ class CreateScreenCommand extends Command with CreateMixin {
       ).create();
 
       await addRoute(name);
+
+      await BindingSample(
+        path: controllerBindingDir,
+        bindingName: controllerBindingName,
+        controllerName: controllerName,
+        controllerImport:
+            './../../../../presentation/${name.snakeCase}/controllers/${name.snakeCase}.controller.dart',
+      ).create();
     } else {
       LogService.error(
         'Declare a name for your screen: get create screen:"Name of your Screen"',

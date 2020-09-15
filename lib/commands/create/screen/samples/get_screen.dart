@@ -1,5 +1,4 @@
 import 'package:get_cli/core/sample.dart';
-import 'package:get_cli/core/utils/pubspec_utils.dart';
 import 'package:meta/meta.dart';
 
 class GetScreenSample extends Sample {
@@ -15,25 +14,22 @@ class GetScreenSample extends Sample {
   }) {
     _screenDir = screenDir;
     _controllerName = controllerName;
-    _controllerDir = _controllerDir;
+    _controllerDir = controllerDir;
     _screenName = screenName;
   }
 
   String get _controller => 'GetView<$_controllerName>';
 
-  Future<String> get import async =>
-      '''\nimport  'package:${await PubspecUtils.getProjectName()}/$_controllerDir';''';
-
   @override
   Future<String> get content async {
     return '''import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-${await import}
+
+import '${_controllerDir}';
 
 class $_screenName extends $_controller {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text('$_screenName'),
@@ -42,7 +38,7 @@ class $_screenName extends $_controller {
       body: Center(
         child: Text(
           '$_screenName is working', 
-          style: TextStyle(fontSize:20),
+          style: TextStyle(fontSize: 20),
         ),
       ),
     );

@@ -13,11 +13,10 @@ class CreateScreenCommand extends Command with CreateMixin {
     var split = GetCli.arguments[1].split(':');
     var hasScreenName = split.length == 2;
     if (hasScreenName) {
-      var baseFolderPresentation = 'lib/presentation/';
+      var baseFolderPresentation = 'lib/presentation';
+      var controllerDir = './controllers/${name.snakeCase}.controller.dart';
       var screenDir =
           '$baseFolderPresentation/${name.snakeCase}/${name.snakeCase}.screen.dart';
-      var controllerDir =
-          '$baseFolderPresentation/${name.snakeCase}/controllers/${name.snakeCase}.controller.dart';
 
       await GetScreenSample(
         screenDir: '$screenDir',

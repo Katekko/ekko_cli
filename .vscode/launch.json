@@ -9,7 +9,7 @@
             "program": "bin/get_cli.dart",
             "args": [
                 "create",
-                "screen:Perfil Usuario"
+                "screen:Perfil"
             ],
             "console": "debugConsole",
         }

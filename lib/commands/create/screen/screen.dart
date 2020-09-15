@@ -1,10 +1,11 @@
 import 'package:get_cli/commands/create/create.dart';
 import 'package:get_cli/common/utils/logger/logger.dart';
 import 'package:get_cli/core/command.dart';
-import 'package:get_cli/core/utils/export.utils.dart';
 import 'package:recase/recase.dart';
 
 import '../../../get_cli.dart';
+import 'functions/add_export.dart';
+import 'functions/add_route.dart';
 import 'samples/get_controller.dart';
 import 'samples/get_screen.dart';
 
@@ -31,7 +32,7 @@ class CreateScreenCommand extends Command with CreateMixin {
         controllerName: controllerName,
       ).create();
 
-      await ExportUtils.addExport(
+      await addExport(
         path: 'lib/presentation/screens.dart',
         line: 'export \'./${name.snakeCase}/${name.snakeCase}.screen.dart\';',
       );
@@ -40,6 +41,8 @@ class CreateScreenCommand extends Command with CreateMixin {
         path: controllerDir,
         fileName: controllerName,
       ).create();
+
+      await addRoute(name);
     } else {
       LogService.error(
         'Declare a name for your screen: get create screen:"Name of your Screen"',

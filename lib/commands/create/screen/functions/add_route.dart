@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:get_cli/commands/create/screen/samples/get_routes.dart';
-import 'package:get_cli/common/utils/logger/logger.dart';
+import 'package:ekko_cli/commands/create/screen/samples/get_routes.dart';
+import 'package:ekko_cli/common/utils/logger/logger.dart';
 import 'package:recase/recase.dart';
 
 import 'add_navigation.dart';

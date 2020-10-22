@@ -1,9 +1,9 @@
-import 'package:get_cli/commands/create/create.dart';
-import 'package:get_cli/common/utils/logger/logger.dart';
-import 'package:get_cli/core/command.dart';
+import 'package:ekko_cli/commands/create/create.dart';
+import 'package:ekko_cli/common/utils/logger/logger.dart';
+import 'package:ekko_cli/core/command.dart';
 import 'package:recase/recase.dart';
 
-import '../../../get_cli.dart';
+import '../../../ekko_cli.dart';
 import 'functions/add_export.dart';
 import 'functions/add_route.dart';
 import 'samples/get_binding.dart';
@@ -13,7 +13,7 @@ import 'samples/get_screen.dart';
 class CreateScreenCommand extends Command with CreateMixin {
   @override
   Future<void> execute() async {
-    var split = GetCli.arguments[1].split(':');
+    var split = EkkoCli.arguments[1].split(':');
     var hasScreenName = split.length == 2;
     if (hasScreenName) {
       var baseFolderPresentation = 'lib/presentation/${name.snakeCase}';

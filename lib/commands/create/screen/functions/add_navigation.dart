@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:get_cli/commands/create/screen/samples/get_navigation.dart';
-import 'package:get_cli/common/utils/logger/logger.dart';
+import 'package:ekko_cli/commands/create/screen/samples/get_navigation.dart';
+import 'package:ekko_cli/common/utils/logger/logger.dart';
 import 'package:recase/recase.dart';
 
 import 'replace_as_expected.dart';

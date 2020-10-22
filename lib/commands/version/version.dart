@@ -1,5 +1,5 @@
-import 'package:get_cli/common/utils/logger/logger.dart';
-import 'package:get_cli/core/command.dart';
+import 'package:ekko_cli/common/utils/logger/logger.dart';
+import 'package:ekko_cli/core/command.dart';
 
 class VersionCommand extends Command {
   @override

@@ -1,4 +1,4 @@
-name: get_cli
+name: ekko_cli
 description: A sample command-line application.
 version: 0.0.1
 

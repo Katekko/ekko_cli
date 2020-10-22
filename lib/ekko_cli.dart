@@ -1,17 +1,17 @@
-import 'package:get_cli/commands.dart';
-import 'package:get_cli/commands/help/help.dart';
-import 'package:get_cli/common/utils/logger/logger.dart';
-import 'package:get_cli/core/command.dart';
+import 'package:ekko_cli/commands.dart';
+import 'package:ekko_cli/commands/help/help.dart';
+import 'package:ekko_cli/common/utils/logger/logger.dart';
+import 'package:ekko_cli/core/command.dart';
 
-class GetCli {
+class EkkoCli {
   final List<String> _arguments;
 
-  GetCli(this._arguments) {
+  EkkoCli(this._arguments) {
     _instance = this;
   }
 
-  static GetCli _instance;
-  static GetCli get to => _instance;
+  static EkkoCli _instance;
+  static EkkoCli get to => _instance;
 
   static List<String> get arguments => to._arguments;
 

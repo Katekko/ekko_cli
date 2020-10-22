@@ -1,4 +1,4 @@
-import 'package:get_cli/core/sample.dart';
+import 'package:ekko_cli/core/sample.dart';
 import 'package:meta/meta.dart';
 
 class ControllerSample extends Sample {

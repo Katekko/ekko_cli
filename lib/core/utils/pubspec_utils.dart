@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:get_cli/common/utils/logger/logger.dart';
+import 'package:ekko_cli/common/utils/logger/logger.dart';
 
 class PubspecUtils {
   static final _pubspec = File('pubspec.yaml');

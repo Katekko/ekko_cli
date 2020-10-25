@@ -1,3 +1,8 @@
+## 0.1.0+1
+
+HOTFIX
+- Turn the project executable
+
 ## 0.1.0
 
 - Create screen Command

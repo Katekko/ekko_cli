@@ -4,6 +4,7 @@ import 'package:ekko_cli/core/command.dart';
 import 'package:ekko_cli/core/functions/add_export.dart';
 import 'package:recase/recase.dart';
 
+import 'functions/add_route.dart';
 import 'samples/body_dto.dart';
 import 'samples/controller.dart';
 import 'samples/endpoint.dart';
@@ -40,7 +41,7 @@ class CreateEndpointCommand extends Command with CreateMixin {
         await ResponseDtoSample(path: dtoResponseDir, fileName: name).create();
         await BodyDtoSample(path: dtoBodyDir, fileName: name).create();
 
-        // await addRoute(name);
+        await addRoute(nameRoute: name, on: on);
 
         // await BindingSample(
         //   path: controllerBindingDir,

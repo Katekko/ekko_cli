@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:ekko_cli/commands/create/app/screen/samples/get_routes.dart';
 import 'package:ekko_cli/common/utils/logger/logger.dart';
 import 'package:ekko_cli/core/functions/replace_as_expected.dart';
+import 'package:ekko_cli/core/functions/routes_sort.dart';
 import 'package:recase/recase.dart';
 
 import 'add_navigation.dart';
@@ -34,25 +35,10 @@ Future<void> addRoute(String nameRoute) async {
 
   lines.add(line);
 
-  _routesSort(lines);
+  routesSort(lines);
 
   await routesFile.writeAsStringSync(lines.join('\n'));
   LogService.success('${nameRoute} route created successfully.');
 
   await addNavigation(nameRoute);
-}
-
-List<String> _routesSort(List<String> lines) {
-  var routes = <String>[];
-  var lines2 = <String>[];
-  lines2.addAll(lines);
-  lines2.forEach((line) {
-    if (line.contains('static const')) {
-      routes.add('$line');
-      lines.remove(line);
-    }
-  });
-  routes.sort();
-  lines.insertAll(lines.length - 1, routes);
-  return lines;
 }

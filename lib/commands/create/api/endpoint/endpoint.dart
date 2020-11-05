@@ -14,48 +14,55 @@ class CreateEndpointCommand extends Command with CreateMixin {
   Future<void> execute() async {
     var hasEndpointName = name != null;
     if (hasEndpointName) {
-      var baseFolderPresentation =
-          'lib/presentation/endpoints/${name.snakeCase}';
+      if (withOn) {
+        var baseFolderPresentation =
+            'lib/presentation/endpoints/$on/${name.snakeCase}';
 
-      var screenDir = '$baseFolderPresentation/${name.snakeCase}.endpoint.dart';
-      var controllerDir =
-          '$baseFolderPresentation/${name.snakeCase}.controller.dart';
+        var screenDir =
+            '$baseFolderPresentation/${name.snakeCase}.endpoint.dart';
+        var controllerDir =
+            '$baseFolderPresentation/${name.snakeCase}.controller.dart';
 
-      var dtoResponseDir =
-          '$baseFolderPresentation/dto/${name.snakeCase}.response.dart';
-      var dtoBodyDir =
-          '$baseFolderPresentation/dto/${name.snakeCase}.body.dart';
+        var dtoResponseDir =
+            '$baseFolderPresentation/dto/${name.snakeCase}.response.dart';
+        var dtoBodyDir =
+            '$baseFolderPresentation/dto/${name.snakeCase}.body.dart';
 
-      await EndpointSample(screenDir: screenDir, name: name).create();
+        await EndpointSample(screenDir: screenDir, name: name).create();
 
-      await addExport(
-        path: 'lib/presentation/endpoint.dart',
-        line:
-            'export \'endpoints/${name.snakeCase}/${name.snakeCase}.endpoint.dart\';',
-      );
+        await addExport(
+          path: 'lib/presentation/endpoint.dart',
+          line:
+              'export \'endpoints/$on/${name.snakeCase}/${name.snakeCase}.endpoint.dart\';',
+        );
 
-      await ControllerSample(path: controllerDir, name: name).create();
-      await ResponseDtoSample(path: dtoResponseDir, fileName: name).create();
-      await BodyDtoSample(path: dtoBodyDir, fileName: name).create();
+        await ControllerSample(path: controllerDir, name: name).create();
+        await ResponseDtoSample(path: dtoResponseDir, fileName: name).create();
+        await BodyDtoSample(path: dtoBodyDir, fileName: name).create();
 
-      // await addRoute(name);
+        // await addRoute(name);
 
-      // await BindingSample(
-      //   path: controllerBindingDir,
-      //   bindingName: controllerBindingName,
-      //   controllerName: controllerName,
-      //   controllerImport:
-      //       './../../../../presentation/${name.snakeCase}/controllers/${name.snakeCase}.controller.dart',
-      // ).create();
+        // await BindingSample(
+        //   path: controllerBindingDir,
+        //   bindingName: controllerBindingName,
+        //   controllerName: controllerName,
+        //   controllerImport:
+        //       './../../../../presentation/${name.snakeCase}/controllers/${name.snakeCase}.controller.dart',
+        // ).create();
 
-      // await addExport(
-      //   path:
-      //       'lib/infrastructure/navigation/bindings/controllers/controllers_bindings.dart',
-      //   line: '''export '${name.snakeCase}.controller.binding.dart';''',
-      // );
+        // await addExport(
+        //   path:
+        //       'lib/infrastructure/navigation/bindings/controllers/controllers_bindings.dart',
+        //   line: '''export '${name.snakeCase}.controller.binding.dart';''',
+        // );
+      } else {
+        LogService.error(
+          'You need to choose the controller that will hold the endpoint: ekko api create endpoint:"Name of your endpoint" on AnyController',
+        );
+      }
     } else {
       LogService.error(
-        'Declare a name for your endpoint: ekko api create endpoint:"Name of your endpoint"',
+        'Choose a name for your endpoint: ekko api create endpoint:"Name of your endpoint" on AnyController',
       );
     }
   }

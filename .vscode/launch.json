@@ -10,7 +10,9 @@
             "args": [
                 "api",
                 "create",
-                "endpoint:Register User"
+                "endpoint:Register User",
+                "on",
+                "auth"
             ],
             "console": "debugConsole",
         }

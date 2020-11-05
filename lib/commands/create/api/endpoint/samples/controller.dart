@@ -39,7 +39,6 @@ class ${_name.pascalCase}Controller extends GetxController {
     }
   }
 
-
   ${_name.pascalCase}Response createResponse() {
     var response = ${_name.pascalCase}Response(
       success: true, 

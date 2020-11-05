@@ -1,3 +1,6 @@
+## 0.2.0+2
+Fix dto generation
+
 ## 0.2.0+1
 Adding default constructor for dtos
 

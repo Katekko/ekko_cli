@@ -28,10 +28,6 @@ class CreateEndpointCommand extends Command with CreateMixin {
       var dtoBodyDir =
           '$baseFolderPresentation/dto/${name.snakeCase}.body.dart';
 
-      var controllerBindingName = '${name.pascalCase}ControllerBinding';
-      var controllerBindingDir =
-          'lib/infrastructure/navigation/bindings/controllers/${name.snakeCase}.controller.binding.dart';
-
       await EndpointSample(screenDir: screenDir, name: name).create();
 
       await addExport(

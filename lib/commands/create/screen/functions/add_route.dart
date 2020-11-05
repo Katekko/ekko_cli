@@ -5,7 +5,7 @@ import 'package:ekko_cli/common/utils/logger/logger.dart';
 import 'package:recase/recase.dart';
 
 import 'add_navigation.dart';
-import 'replace_as_expected.dart';
+import '../../../../core/functions/replace_as_expected.dart';
 
 Future<void> addRoute(String nameRoute) async {
   File routesFile = File(

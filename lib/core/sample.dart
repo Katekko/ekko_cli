@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:ekko_cli/commands/create/screen/functions/replace_as_expected.dart';
+import 'package:ekko_cli/core/functions/replace_as_expected.dart';
 import 'package:ekko_cli/common/utils/logger/logger.dart';
 import 'package:path/path.dart';
 

@@ -1,56 +1,21 @@
 import 'package:ekko_cli/core/sample.dart';
 import 'package:meta/meta.dart';
+import 'package:recase/recase.dart';
 
 class EndpointSample extends Sample {
-  String _endpointDir;
-  String _endpointName;
-  String _controllerName;
-  String _controllerImport;
+  final String _endpointDir;
+  final String _controllerImport;
+  final String _name;
 
   EndpointSample({
-    @required String screenName,
     @required String screenDir,
-    @required String controllerName,
+    @required String name,
     @required String controllerImport,
-  }) {
-    _endpointDir = screenDir;
-    _controllerName = controllerName;
-    _controllerImport = controllerImport;
-    _endpointName = screenName;
-  }
+  })  : _endpointDir = screenDir,
+        _controllerImport = controllerImport,
+        _name = name;
 
-  String get _controller => 'GetView<$_controllerName>';
-
-// import 'dart:async';
-
-// import 'package:get_server/get_server.dart';
-
-// import 'authenticate_user.controller.dart';
-
-// class AuthenticateUserEndpoint extends GetView<AuthenticateUserController> {
-//   @override
-//   FutureOr<Widget> build(BuildContext context) async {
-//     try {
-//       var payload = await context.request.payload();
-
-//       var body = await controller.validateBody(payload: payload);
-
-//       var user = await controller.authenticateUser(
-//         login: body.login,
-//         password: body.password,
-//       );
-
-//       var token = controller.generateToken(user: user);
-
-//       var response = controller.createResponse(user: user, token: token);
-
-//       return Json(response);
-//     } catch (err) {
-//       var errorResponse = controller.createErrorResponse(context, err);
-//       return Json(errorResponse);
-//     }
-//   }
-// }
+  String get _controller => 'GetView<${_name.pascalCase}Controller>';
 
   @override
   String get content {
@@ -60,7 +25,7 @@ import 'package:get_server/get_server.dart';
 
 import '${_controllerImport}';
 
-class $_endpointName extends $_controller {
+class ${_name.pascalCase}Endpoint extends $_controller {
   @override
   FutureOr<Widget> build(BuildContext context) async {
      try {

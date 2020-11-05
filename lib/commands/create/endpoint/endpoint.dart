@@ -19,8 +19,6 @@ class CreateEndpointCommand extends Command with CreateMixin {
       var baseFolderPresentation =
           'lib/presentation/endpoints/${name.snakeCase}';
 
-      var endpointName = '${name.pascalCase}Endpoint';
-      var controllerName = '${name.pascalCase}Controller';
       var controllerBindingName = '${name.pascalCase}ControllerBinding';
 
       var screenDir = '$baseFolderPresentation/${name.snakeCase}.endpoint.dart';
@@ -36,9 +34,8 @@ class CreateEndpointCommand extends Command with CreateMixin {
 
       await EndpointSample(
         screenDir: '$screenDir',
-        screenName: endpointName,
         controllerImport: './controllers/${name.snakeCase}.controller.dart',
-        controllerName: controllerName,
+        name: name,
       ).create();
 
       await addExport(
@@ -47,10 +44,7 @@ class CreateEndpointCommand extends Command with CreateMixin {
             'export \'./endpoints/${name.snakeCase}/${name.snakeCase}.endpoint.dart\';',
       );
 
-      await ControllerSample(
-        path: controllerDir,
-        fileName: controllerName,
-      ).create();
+      await ControllerSample(path: controllerDir, name: name).create();
 
       await ResponseDtoSample(
         path: dtoResponseDir,

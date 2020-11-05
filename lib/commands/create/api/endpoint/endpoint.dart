@@ -1,20 +1,18 @@
 import 'package:ekko_cli/commands/create/create.dart';
-import 'package:ekko_cli/commands/create/endpoint/samples/body_dto.dart';
 import 'package:ekko_cli/common/utils/logger/logger.dart';
 import 'package:ekko_cli/core/command.dart';
 import 'package:ekko_cli/core/functions/add_export.dart';
 import 'package:recase/recase.dart';
 
-import '../../../ekko_cli.dart';
+import 'samples/body_dto.dart';
 import 'samples/controller.dart';
-import 'samples/response_dto.dart';
 import 'samples/endpoint.dart';
+import 'samples/response_dto.dart';
 
 class CreateEndpointCommand extends Command with CreateMixin {
   @override
   Future<void> execute() async {
-    var split = EkkoCli.arguments[1].split(':');
-    var hasEndpointName = split.length == 2;
+    var hasEndpointName = name != null;
     if (hasEndpointName) {
       var baseFolderPresentation =
           'lib/presentation/endpoints/${name.snakeCase}';
@@ -57,7 +55,7 @@ class CreateEndpointCommand extends Command with CreateMixin {
       // );
     } else {
       LogService.error(
-        'Declare a name for your screen: get create screen:"Name of your Screen"',
+        'Declare a name for your endpoint: ekko api create endpoint:"Name of your endpoint"',
       );
     }
   }

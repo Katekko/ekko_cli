@@ -8,6 +8,7 @@
             "type": "dart",
             "program": "bin/ekko.dart",
             "args": [
+                "api",
                 "create",
                 "endpoint:Register User"
             ],

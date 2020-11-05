@@ -1,3 +1,6 @@
+## 0.2.0+1
+Adding default constructor for dtos
+
 ## 0.2.0
 
 Now its possible create endpoint for ekko api aswell.

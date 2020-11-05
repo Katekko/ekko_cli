@@ -2,11 +2,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "debug ekko_cli_api",
+            "name": "debug ekko_cli",
             "request": "launch",
             "cwd": "./",
             "type": "dart",
-            "program": "bin/ekko_cli.dart",
+            "program": "bin/ekko.dart",
             "args": [
                 "create",
                 "endpoint:Register User"

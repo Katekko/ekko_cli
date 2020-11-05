@@ -5,6 +5,7 @@ import 'package:ekko_cli/core/functions/add_export.dart';
 import 'package:recase/recase.dart';
 
 import '../../../ekko_cli.dart';
+import 'samples/controller.dart';
 import 'samples/endpoint.dart';
 
 class CreateEndpointCommand extends Command with CreateMixin {
@@ -35,13 +36,14 @@ class CreateEndpointCommand extends Command with CreateMixin {
 
       await addExport(
         path: 'lib/presentation/endpoint.dart',
-        line: 'export \'./${name.snakeCase}/${name.snakeCase}.endpoint.dart\';',
+        line:
+            'export \'./endpoints/${name.snakeCase}/${name.snakeCase}.endpoint.dart\';',
       );
 
-      // await ControllerSample(
-      //   path: controllerDir,
-      //   fileName: controllerName,
-      // ).create();
+      await ControllerSample(
+        path: controllerDir,
+        fileName: controllerName,
+      ).create();
 
       // await addRoute(name);
 

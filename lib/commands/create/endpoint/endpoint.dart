@@ -1,4 +1,5 @@
 import 'package:ekko_cli/commands/create/create.dart';
+import 'package:ekko_cli/commands/create/endpoint/samples/body_dto.dart';
 import 'package:ekko_cli/common/utils/logger/logger.dart';
 import 'package:ekko_cli/core/command.dart';
 import 'package:ekko_cli/core/functions/add_export.dart';
@@ -6,6 +7,7 @@ import 'package:recase/recase.dart';
 
 import '../../../ekko_cli.dart';
 import 'samples/controller.dart';
+import 'samples/response_dto.dart';
 import 'samples/endpoint.dart';
 
 class CreateEndpointCommand extends Command with CreateMixin {
@@ -23,9 +25,14 @@ class CreateEndpointCommand extends Command with CreateMixin {
 
       var screenDir = '$baseFolderPresentation/${name.snakeCase}.endpoint.dart';
       var controllerDir =
-          '$baseFolderPresentation/controllers/${name.snakeCase}.controller.dart';
+          '$baseFolderPresentation/${name.snakeCase}.controller.dart';
       var controllerBindingDir =
           'lib/infrastructure/navigation/bindings/controllers/${name.snakeCase}.controller.binding.dart';
+
+      var dtoResponseDir =
+          '$baseFolderPresentation/dto/${name.snakeCase}.response.dart';
+      var dtoBodyDir =
+          '$baseFolderPresentation/dto/${name.snakeCase}.body.dart';
 
       await EndpointSample(
         screenDir: '$screenDir',
@@ -43,6 +50,16 @@ class CreateEndpointCommand extends Command with CreateMixin {
       await ControllerSample(
         path: controllerDir,
         fileName: controllerName,
+      ).create();
+
+      await ResponseDtoSample(
+        path: dtoResponseDir,
+        fileName: name,
+      ).create();
+
+      await BodyDtoSample(
+        path: dtoBodyDir,
+        fileName: name,
       ).create();
 
       // await addRoute(name);

@@ -2,12 +2,12 @@ import 'package:ekko_cli/core/sample.dart';
 
 class NavigationSample extends Sample {
   @override
-  String get content => '''import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+  String get content => '''import 'package:get_server/get_server.dart';
 
-import '../../presentation/screens.dart';
+import '../../presentation/endpoints.dart';
 import 'bindings/controllers/controllers_bindings.dart';
 import 'routes.dart';
+
 
 class Nav {
   static List<GetPage> routes = [

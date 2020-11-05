@@ -32,7 +32,7 @@ class CreateEndpointCommand extends Command with CreateMixin {
         await EndpointSample(screenDir: screenDir, name: name).create();
 
         await addExport(
-          path: 'lib/presentation/endpoint.dart',
+          path: 'lib/presentation/endpoints.dart',
           line:
               'export \'endpoints/$on/${name.snakeCase}/${name.snakeCase}.endpoint.dart\';',
         );

@@ -7,6 +7,8 @@ import 'package:ekko_cli/core/functions/routes_sort.dart';
 import 'package:meta/meta.dart';
 import 'package:recase/recase.dart';
 
+import 'add_navigation.dart';
+
 Future<void> addRoute({@required String nameRoute, @required String on}) async {
   final routesFile = File(
     replaceAsExpected(path: 'lib/infrastructure/navigation/routes.dart'),
@@ -39,5 +41,5 @@ Future<void> addRoute({@required String nameRoute, @required String on}) async {
   await routesFile.writeAsStringSync(lines.join('\n'));
   LogService.success('${nameRoute} route created successfully.');
 
-  // await addNavigation(nameRoute);
+  await addNavigation(nameRoute);
 }

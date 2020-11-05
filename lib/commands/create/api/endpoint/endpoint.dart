@@ -5,6 +5,7 @@ import 'package:ekko_cli/core/functions/add_export.dart';
 import 'package:recase/recase.dart';
 
 import 'functions/add_route.dart';
+import 'samples/binding.dart';
 import 'samples/body_dto.dart';
 import 'samples/controller.dart';
 import 'samples/endpoint.dart';
@@ -29,6 +30,9 @@ class CreateEndpointCommand extends Command with CreateMixin {
         var dtoBodyDir =
             '$baseFolderPresentation/dto/${name.snakeCase}.body.dart';
 
+        var controllerBindingDir =
+            'lib/infrastructure/navigation/bindings/controllers/${name.snakeCase}.controller.binding.dart';
+
         await EndpointSample(screenDir: screenDir, name: name).create();
 
         await addExport(
@@ -43,19 +47,18 @@ class CreateEndpointCommand extends Command with CreateMixin {
 
         await addRoute(nameRoute: name, on: on);
 
-        // await BindingSample(
-        //   path: controllerBindingDir,
-        //   bindingName: controllerBindingName,
-        //   controllerName: controllerName,
-        //   controllerImport:
-        //       './../../../../presentation/${name.snakeCase}/controllers/${name.snakeCase}.controller.dart',
-        // ).create();
+        await BindingSample(
+          name: name,
+          path: controllerBindingDir,
+          controllerImport:
+              '../../../../presentation/endpoints/$on/${name.snakeCase}/${name.snakeCase}.controller.dart',
+        ).create();
 
-        // await addExport(
-        //   path:
-        //       'lib/infrastructure/navigation/bindings/controllers/controllers_bindings.dart',
-        //   line: '''export '${name.snakeCase}.controller.binding.dart';''',
-        // );
+        await addExport(
+          path:
+              'lib/infrastructure/navigation/bindings/controllers/controllers_bindings.dart',
+          line: '''export '${name.snakeCase}.controller.binding.dart';''',
+        );
       } else {
         LogService.error(
           'You need to choose the controller that will hold the endpoint: ekko api create endpoint:"Name of your endpoint" on AnyController',

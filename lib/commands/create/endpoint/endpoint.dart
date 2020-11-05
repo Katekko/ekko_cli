@@ -19,42 +19,30 @@ class CreateEndpointCommand extends Command with CreateMixin {
       var baseFolderPresentation =
           'lib/presentation/endpoints/${name.snakeCase}';
 
-      var controllerBindingName = '${name.pascalCase}ControllerBinding';
-
       var screenDir = '$baseFolderPresentation/${name.snakeCase}.endpoint.dart';
       var controllerDir =
           '$baseFolderPresentation/${name.snakeCase}.controller.dart';
-      var controllerBindingDir =
-          'lib/infrastructure/navigation/bindings/controllers/${name.snakeCase}.controller.binding.dart';
 
       var dtoResponseDir =
           '$baseFolderPresentation/dto/${name.snakeCase}.response.dart';
       var dtoBodyDir =
           '$baseFolderPresentation/dto/${name.snakeCase}.body.dart';
 
-      await EndpointSample(
-        screenDir: '$screenDir',
-        controllerImport: './controllers/${name.snakeCase}.controller.dart',
-        name: name,
-      ).create();
+      var controllerBindingName = '${name.pascalCase}ControllerBinding';
+      var controllerBindingDir =
+          'lib/infrastructure/navigation/bindings/controllers/${name.snakeCase}.controller.binding.dart';
+
+      await EndpointSample(screenDir: screenDir, name: name).create();
 
       await addExport(
         path: 'lib/presentation/endpoint.dart',
         line:
-            'export \'./endpoints/${name.snakeCase}/${name.snakeCase}.endpoint.dart\';',
+            'export \'endpoints/${name.snakeCase}/${name.snakeCase}.endpoint.dart\';',
       );
 
       await ControllerSample(path: controllerDir, name: name).create();
-
-      await ResponseDtoSample(
-        path: dtoResponseDir,
-        fileName: name,
-      ).create();
-
-      await BodyDtoSample(
-        path: dtoBodyDir,
-        fileName: name,
-      ).create();
+      await ResponseDtoSample(path: dtoResponseDir, fileName: name).create();
+      await BodyDtoSample(path: dtoBodyDir, fileName: name).create();
 
       // await addRoute(name);
 

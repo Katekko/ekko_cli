@@ -4,15 +4,12 @@ import 'package:recase/recase.dart';
 
 class EndpointSample extends Sample {
   final String _endpointDir;
-  final String _controllerImport;
   final String _name;
 
   EndpointSample({
     @required String screenDir,
     @required String name,
-    @required String controllerImport,
   })  : _endpointDir = screenDir,
-        _controllerImport = controllerImport,
         _name = name;
 
   String get _controller => 'GetView<${_name.pascalCase}Controller>';
@@ -23,7 +20,7 @@ class EndpointSample extends Sample {
 
 import 'package:get_server/get_server.dart';
 
-import '${_controllerImport}';
+import '${_name.snakeCase}.controller.dart';
 
 class ${_name.pascalCase}Endpoint extends $_controller {
   @override

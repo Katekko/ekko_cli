@@ -33,6 +33,7 @@ class ${_fileName.pascalCase}Response {
 
 @JsonSerializable()
 class DataResponse {
+  const DataResponse();
   factory DataResponse.fromJson(json) => _\$DataResponseFromJson(json);
   Map<String, dynamic> toJson() => _\$DataResponseToJson(this);
 }

@@ -19,7 +19,7 @@ part '${_fileName.snakeCase}.body.g.dart';
 
 @JsonSerializable()
 class ${_fileName.pascalCase}Body {
-  cosnt ${_fileName.pascalCase}();
+  const ${_fileName.pascalCase}Body();
 
   factory ${_fileName.pascalCase}Body.fromJson(json) =>
       _\$${_fileName.pascalCase}BodyFromJson(json);

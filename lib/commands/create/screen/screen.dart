@@ -4,7 +4,7 @@ import 'package:ekko_cli/core/command.dart';
 import 'package:recase/recase.dart';
 
 import '../../../ekko_cli.dart';
-import 'functions/add_export.dart';
+import '../../../core/functions/add_export.dart';
 import 'functions/add_route.dart';
 import 'samples/get_binding.dart';
 import 'samples/get_controller.dart';

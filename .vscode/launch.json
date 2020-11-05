@@ -9,7 +9,7 @@
             "program": "bin/ekko_cli.dart",
             "args": [
                 "create",
-                "screen:Perfil Usuario"
+                "endpoint:Register User"
             ],
             "console": "debugConsole",
         }

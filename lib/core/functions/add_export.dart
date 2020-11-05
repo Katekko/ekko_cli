@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:meta/meta.dart';
 
-import 'replace_as_expected.dart';
+import '../../commands/create/screen/functions/replace_as_expected.dart';
 
 Future<void> addExport({
   @required String path,

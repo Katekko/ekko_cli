@@ -1,5 +1,6 @@
 import 'package:ekko_cli/core/sample.dart';
 import 'package:meta/meta.dart';
+import 'package:recase/recase.dart';
 
 class BodyDtoSample extends Sample {
   String _path;
@@ -10,13 +11,18 @@ class BodyDtoSample extends Sample {
   }
 
   @override
-  String get content => '''import 'package:get/get.dart';
+  String get content =>
+      '''import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 
-class $_fileName extends GetxController {
-  //TODO: Implement $_fileName
-  
-  final count = 0.obs;
-  void increment() => count.value++;
+part '${_fileName.snakeCase}.body.g.dart';
+
+@JsonSerializable()
+class ${_fileName.pascalCase}Body {
+  factory ${_fileName.pascalCase}Body.fromJson(json) =>
+      _\$${_fileName.pascalCase}BodyFromJson(json);
+
+  Map<String, dynamic> toJson() => _\$${_fileName.pascalCase}BodyToJson(this);
 }
 ''';
 

@@ -1,6 +1,6 @@
 name: ekko_cli
 description: CLI For EKKO Boilerplate and EKKO API
-version: 0.2.0
+version: 0.2.0+1
 
 repository: https://github.com/Katekko/cli_ekko
 

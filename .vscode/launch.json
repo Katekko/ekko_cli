@@ -8,11 +8,9 @@
             "type": "dart",
             "program": "bin/ekko.dart",
             "args": [
-                "api",
+                "app",
                 "create",
-                "endpoint:Register User",
-                "on",
-                "auth"
+                "screen:Register User",
             ],
             "console": "debugConsole",
         }

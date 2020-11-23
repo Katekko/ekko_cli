@@ -1,3 +1,6 @@
+## 0.2.0+3
+Fix app create screen
+
 ## 0.2.0+2
 Fix dto generation
 

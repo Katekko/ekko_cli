@@ -10,7 +10,7 @@
             "args": [
                 "app",
                 "create",
-                "screen:Register User",
+                "model:user",
             ],
             "console": "debugConsole",
         }

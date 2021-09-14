@@ -1,5 +1,4 @@
 import 'package:ekko_cli/core/sample.dart';
-import 'package:meta/meta.dart';
 import 'package:recase/recase.dart';
 
 class EndpointSample extends Sample {
@@ -7,8 +6,8 @@ class EndpointSample extends Sample {
   final String _name;
 
   EndpointSample({
-    @required String screenDir,
-    @required String name,
+    required String screenDir,
+    required String name,
   })  : _endpointDir = screenDir,
         _name = name;
 

@@ -1,8 +1,6 @@
 import 'dart:io';
 
-import 'package:meta/meta.dart';
-
-String replaceAsExpected({@required String path, String replaceChar}) {
+String replaceAsExpected({required String path, String? replaceChar}) {
   if (path.contains('\\')) {
     if (Platform.isLinux || Platform.isMacOS) {
       return path.replaceAll('\\', '/');

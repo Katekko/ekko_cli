@@ -19,7 +19,7 @@ Future<void> addRoute(String nameRoute) async {
 
   List<String> lines = await routesFile.readAsLines();
   String line =
-      '''\n\tstatic const ${nameRoute.snakeCase.toUpperCase()} = \'/${nameRoute.snakeCase.toLowerCase().replaceAll('_', '-')}\';''';
+      '''\n\tstatic const ${nameRoute.snakeCase.toUpperCase()} = '/${nameRoute.snakeCase.toLowerCase().replaceAll('_', '-')}';''';
   if (lines.contains(line)) {
     return;
   }
@@ -37,8 +37,8 @@ Future<void> addRoute(String nameRoute) async {
 
   routesSort(lines);
 
-  await routesFile.writeAsStringSync(lines.join('\n'));
-  LogService.success('${nameRoute} route created successfully.');
+  routesFile.writeAsStringSync(lines.join('\n'));
+  LogService.success('$nameRoute route created successfully.');
 
   await addNavigation(nameRoute);
 }

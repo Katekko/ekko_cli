@@ -10,10 +10,10 @@ class EkkoCli {
     _instance = this;
   }
 
-  static EkkoCli _instance;
-  static EkkoCli get to => _instance;
+  static EkkoCli? _instance;
+  static EkkoCli? get to => _instance;
 
-  static List<String> get arguments => to._arguments;
+  static List<String> get arguments => to?._arguments ?? [];
 
   Command findCommand() => _findCommand(0, commands);
 

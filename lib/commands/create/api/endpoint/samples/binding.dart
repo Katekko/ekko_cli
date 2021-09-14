@@ -1,6 +1,5 @@
 import 'package:ekko_cli/core/sample.dart';
 import 'package:recase/recase.dart';
-import 'package:meta/meta.dart';
 
 class BindingSample extends Sample {
   final String _path;
@@ -8,9 +7,9 @@ class BindingSample extends Sample {
   final String _controllerImport;
 
   BindingSample({
-    @required String path,
-    @required String name,
-    @required String controllerImport,
+    required String path,
+    required String name,
+    required String controllerImport,
   })  : _path = path,
         _name = name,
         _controllerImport = controllerImport;

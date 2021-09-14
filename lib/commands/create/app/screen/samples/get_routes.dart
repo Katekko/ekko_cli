@@ -1,11 +1,8 @@
 import 'package:ekko_cli/core/sample.dart';
-import 'package:meta/meta.dart';
 
 class RouteSample extends Sample {
-  String _initial;
-  RouteSample({@required String initial}) {
-    _initial = initial;
-  }
+  final String _initial;
+  RouteSample({required String initial}) : _initial = initial;
 
   @override
   String get content => '''

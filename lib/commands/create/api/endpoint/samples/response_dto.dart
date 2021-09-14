@@ -1,14 +1,12 @@
 import 'package:ekko_cli/core/sample.dart';
-import 'package:meta/meta.dart';
 import 'package:recase/recase.dart';
 
 class ResponseDtoSample extends Sample {
-  String _path;
-  String _fileName;
-  ResponseDtoSample({@required String path, @required String fileName}) {
-    _path = path;
-    _fileName = fileName;
-  }
+  final String _path;
+  final String _fileName;
+  ResponseDtoSample({required String path, required String fileName})
+      : _path = path,
+        _fileName = fileName;
 
   @override
   String get content =>

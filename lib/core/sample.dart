@@ -15,7 +15,7 @@ abstract class Sample {
 
   /// create file
   Future<void> create() async {
-    File file = await File(replaceAsExpected(path: path));
+    File file = File(replaceAsExpected(path: path));
     if (!await file.exists() || overwrite) {
       await file.create(recursive: true);
       await file.writeAsString(content);

@@ -6,7 +6,7 @@ class PubspecUtils {
   static final _pubspec = File('pubspec.yaml');
 
   static Future<String> getProjectName() async {
-    String name;
+    var name = '';
     try {
       var lines = _pubspec.readAsLinesSync();
       name = lines
@@ -23,13 +23,13 @@ class PubspecUtils {
   }
 
   static void _onFileSystemError(FileSystemException e) {
-    if (e.osError.errorCode == 2) {
+    if (e.osError?.errorCode == 2) {
       LogService.error(
         'pubspec.yaml not found in current directory, '
         'are you in the root folder of your project?',
       );
       return;
-    } else if (e.osError.errorCode == 13) {
+    } else if (e.osError?.errorCode == 13) {
       LogService.error('You are not allowed to access pubspec.yaml');
       return;
     }

@@ -1,13 +1,8 @@
 import 'dart:io';
 
-import 'package:meta/meta.dart';
-
 import 'replace_as_expected.dart';
 
-Future<void> addExport({
-  @required String path,
-  @required String line,
-}) async {
+Future<void> addExport({required String path, required String line}) async {
   File _file = File(replaceAsExpected(path: path));
   if (!await _file.exists()) {
     await _file.create(recursive: true);
@@ -29,5 +24,5 @@ Future<void> addExport({
 
   lines.sort();
 
-  await _file.writeAsStringSync(lines.join('\n'));
+  _file.writeAsStringSync(lines.join('\n'));
 }

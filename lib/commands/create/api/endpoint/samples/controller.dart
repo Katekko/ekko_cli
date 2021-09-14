@@ -1,14 +1,12 @@
 import 'package:ekko_cli/core/sample.dart';
-import 'package:meta/meta.dart';
 import 'package:recase/recase.dart';
 
 class ControllerSample extends Sample {
-  String _path;
-  String _name;
-  ControllerSample({@required String path, @required String name}) {
-    _path = path;
-    _name = name;
-  }
+  final String _path;
+  final String _name;
+  ControllerSample({required String path, required String name})
+      : _path = path,
+        _name = name;
 
   @override
   String get content => '''import 'package:get_server/get_server.dart';

@@ -1,23 +1,20 @@
 import 'package:ekko_cli/core/sample.dart';
-import 'package:meta/meta.dart';
 
 class GetScreenSample extends Sample {
-  String _screenDir;
-  String _screenName;
-  String _controllerName;
-  String _controllerImport;
+  final String _screenDir;
+  final String _screenName;
+  final String _controllerName;
+  final String _controllerImport;
 
   GetScreenSample({
-    @required String screenName,
-    @required String screenDir,
-    @required String controllerName,
-    @required String controllerImport,
-  }) {
-    _screenDir = screenDir;
-    _controllerName = controllerName;
-    _controllerImport = controllerImport;
-    _screenName = screenName;
-  }
+    required String screenName,
+    required String screenDir,
+    required String controllerName,
+    required String controllerImport,
+  })  : _screenDir = screenDir,
+        _controllerName = controllerName,
+        _controllerImport = controllerImport,
+        _screenName = screenName;
 
   String get _controller => 'GetView<$_controllerName>';
 
@@ -26,7 +23,7 @@ class GetScreenSample extends Sample {
     return '''import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '${_controllerImport}';
+import '$_controllerImport';
 
 class $_screenName extends $_controller {
   @override

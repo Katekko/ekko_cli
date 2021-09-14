@@ -14,7 +14,7 @@ Future<void> addNavigation(String name) async {
     await NavigationSample().create();
   }
 
-  var lines = await navigationFile.readAsLinesSync();
+  var lines = navigationFile.readAsLinesSync();
 
   while (lines.last.isEmpty) {
     lines.removeLast();
@@ -40,6 +40,6 @@ Future<void> addNavigation(String name) async {
       binding: ${name.pascalCase}ControllerBinding(),
     ),    ''');
 
-  await navigationFile.writeAsStringSync(lines.join('\n'));
+  navigationFile.writeAsStringSync(lines.join('\n'));
   LogService.success('${name.pascalCase} navigation added successfully.');
 }

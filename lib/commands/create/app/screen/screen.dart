@@ -29,7 +29,7 @@ class CreateScreenCommand extends Command with CreateMixin {
           'lib/infrastructure/navigation/bindings/controllers/${name.snakeCase}.controller.binding.dart';
 
       await GetScreenSample(
-        screenDir: '$screenDir',
+        screenDir: screenDir,
         screenName: screenName,
         controllerImport: './controllers/${name.snakeCase}.controller.dart',
         controllerName: controllerName,

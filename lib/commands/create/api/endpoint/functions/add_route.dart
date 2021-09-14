@@ -4,12 +4,11 @@ import 'package:ekko_cli/commands/create/api/endpoint/samples/route.dart';
 import 'package:ekko_cli/common/utils/logger/logger.dart';
 import 'package:ekko_cli/core/functions/replace_as_expected.dart';
 import 'package:ekko_cli/core/functions/routes_sort.dart';
-import 'package:meta/meta.dart';
 import 'package:recase/recase.dart';
 
 import 'add_navigation.dart';
 
-Future<void> addRoute({@required String nameRoute, @required String on}) async {
+Future<void> addRoute({required String nameRoute, required String on}) async {
   final routesFile = File(
     replaceAsExpected(path: 'lib/infrastructure/navigation/routes.dart'),
   );
@@ -20,7 +19,7 @@ Future<void> addRoute({@required String nameRoute, @required String on}) async {
 
   List<String> lines = await routesFile.readAsLines();
   final line =
-      '''\n\tstatic const ${nameRoute.snakeCase.toUpperCase()} = \'/$on/${nameRoute.snakeCase.toLowerCase().replaceAll('_', '-')}\';''';
+      '''\n\tstatic const ${nameRoute.snakeCase.toUpperCase()} = '/$on/${nameRoute.snakeCase.toLowerCase().replaceAll('_', '-')}';''';
   if (lines.contains(line)) {
     return;
   }
@@ -38,8 +37,8 @@ Future<void> addRoute({@required String nameRoute, @required String on}) async {
 
   routesSort(lines);
 
-  await routesFile.writeAsStringSync(lines.join('\n'));
-  LogService.success('${nameRoute} route created successfully.');
+  routesFile.writeAsStringSync(lines.join('\n'));
+  LogService.success('$nameRoute route created successfully.');
 
   await addNavigation(nameRoute);
 }

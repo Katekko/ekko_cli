@@ -1,13 +1,11 @@
 import 'package:ekko_cli/core/sample.dart';
-import 'package:meta/meta.dart';
 
 class ControllerSample extends Sample {
-  String _path;
-  String _fileName;
-  ControllerSample({@required String path, @required String fileName}) {
-    _path = path;
-    _fileName = fileName;
-  }
+  final String _path;
+  final String _fileName;
+  ControllerSample({required String path, required String fileName})
+      : _path = path,
+        _fileName = fileName;
 
   @override
   String get content => '''import 'package:get/get.dart';

@@ -25,7 +25,7 @@ class CreateModelCommand extends Command with CreateMixin {
         final dataDir = 'lib/infrastructure/data/${name.snakeCase}.data.dart';
 
         await ModelSample(fileName: modelName, path: modelDir).create();
-        await DataSample(fileName: dataName, path: dataDir, attributs: {'String': 'atributoTeste', 'int': 'idCompania'}).create();
+        await DataSample(fileName: dataName, path: dataDir).create();
       } else {
         LogService.error(
           'Declare a name for your screen: ekko app create screen:"Name of your Screen"',

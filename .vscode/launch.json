@@ -11,6 +11,8 @@
                 "app",
                 "create",
                 "model:user",
+                "on",
+                "user"
             ],
             "console": "debugConsole",
         }

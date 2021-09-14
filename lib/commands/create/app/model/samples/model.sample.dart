@@ -10,19 +10,18 @@ class ModelSample extends Sample {
   String get name => _fileName.split('M')[0];
 
   @override
-  String get content => '''import 'package:get/get.dart';
-
+  String get content => '''
 class $_fileName {
   //TODO: Implement $_fileName
   
   final int id;
   const $_fileName({required this.id});
 
-  factory $_fileName.fromData({required ${name}Data data}) {
+  factory $_fileName.fromData(${name}Data data) {
     return $_fileName(id: data.id);
   }
 
-  factory $_fileName.fromDao({required ${name}Dao dao}) {
+  factory $_fileName.fromDao(${name}Dao dao) {
     return $_fileName(id: dao.id);
   }
 

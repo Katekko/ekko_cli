@@ -1,3 +1,7 @@
+## 0.3.0
+Adding creating model
+```ekko app create model:<ModelName> on <DomainName>``` 
+
 ## 0.2.0+3
 Fix app create screen
 

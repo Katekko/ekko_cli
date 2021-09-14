@@ -11,6 +11,8 @@ class ModelSample extends Sample {
 
   @override
   String get content => '''
+  import '../../../infrastructure/data/$name.data.dart';
+
 class $_fileName {
   //TODO: Implement $_fileName
   
@@ -21,13 +23,13 @@ class $_fileName {
     return $_fileName(id: data.id);
   }
 
-  factory $_fileName.fromDao(${name}Dao dao) {
-    return $_fileName(id: dao.id);
-  }
+  // factory $_fileName.fromDao(${name}Dao dao) {
+  //   return $_fileName(id: dao.id);
+  // }
 
-  ${name}Dao toDao() {
-    return ${name}Dao(id: id);
-  }
+  // ${name}Dao toDao() {
+  //   return ${name}Dao(id: id);
+  // }
 }
 ''';
 

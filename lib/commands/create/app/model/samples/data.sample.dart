@@ -1,4 +1,5 @@
 import 'package:ekko_cli/core/sample.dart';
+import 'package:recase/recase.dart';
 
 class DataSample extends Sample {
   final String _path;
@@ -7,23 +8,23 @@ class DataSample extends Sample {
       : _path = path,
         _fileName = fileName;
 
-  String get name => _fileName.split('M')[0];
+  String get name => _fileName.split('D')[0];
 
   @override
   String get content =>
       '''import 'package:json_annotation/json_annotation.dart';
-part '$_fileName.data.g.dart';
+
+part '${name.snakeCase}.data.g.dart';
 
 @JsonSerializable()
-class ${_fileName}Data {
+class $_fileName {
   final int id;
+  const $_fileName({required this.id});
 
-  ${_fileName}Data({this.id});
+  factory $_fileName.fromJson(Map<String, dynamic> json) =>
+      _\$${_fileName}FromJson(json);
 
-  factory ${_fileName}Data.fromJson(Map<String, dynamic> json) =>
-      _\$${_fileName}DataFromJson(json);
-
-  Map<String, dynamic> toJson() => _\$${_fileName}DataToJson(this);
+  Map<String, dynamic> toJson() => _\$${_fileName}ToJson(this);
 }
 ''';
 

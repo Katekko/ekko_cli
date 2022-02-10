@@ -1,15 +1,15 @@
 import 'dart:io';
 
-import 'package:ekko_cli/commands/create/api/endpoint/samples/route.dart';
 import 'package:ekko_cli/common/utils/logger/logger.dart';
 import 'package:ekko_cli/core/functions/replace_as_expected.dart';
 import 'package:ekko_cli/core/functions/routes_sort.dart';
 import 'package:recase/recase.dart';
 
+import '../samples/get_routes.dart';
 import 'add_navigation.dart';
 
-Future<void> addRoute({required String nameRoute, required String on}) async {
-  final routesFile = File(
+Future<void> addRoute(String nameRoute) async {
+  File routesFile = File(
     replaceAsExpected(path: 'lib/infrastructure/navigation/routes.dart'),
   );
 
@@ -18,8 +18,8 @@ Future<void> addRoute({required String nameRoute, required String on}) async {
   }
 
   List<String> lines = await routesFile.readAsLines();
-  final line =
-      '''\n\tstatic const ${nameRoute.snakeCase.toUpperCase()} = '/$on/${nameRoute.snakeCase.toLowerCase().replaceAll('_', '-')}';''';
+  String line =
+      '''\n\tstatic const ${nameRoute.snakeCase.toUpperCase()} = '/${nameRoute.snakeCase.toLowerCase().replaceAll('_', '-')}';''';
   if (lines.contains(line)) {
     return;
   }

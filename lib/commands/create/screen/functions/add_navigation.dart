@@ -1,12 +1,13 @@
 import 'dart:io';
 
-import 'package:ekko_cli/commands/create/api/endpoint/samples/navigation.dart';
 import 'package:ekko_cli/common/utils/logger/logger.dart';
 import 'package:ekko_cli/core/functions/replace_as_expected.dart';
 import 'package:recase/recase.dart';
 
+import '../samples/get_navigation.dart';
+
 Future<void> addNavigation(String name) async {
-  final navigationFile = File(
+  File navigationFile = File(
     replaceAsExpected(path: 'lib/infrastructure/navigation/navigation.dart'),
   );
 
@@ -23,10 +24,10 @@ Future<void> addNavigation(String name) async {
     lines.last = lines.last.replaceAll('}', '');
     lines.add('}');
   }
-  final indexStartNavClass = lines.indexWhere(
+  int indexStartNavClass = lines.indexWhere(
     (line) => line.contains('class Nav'),
   );
-  var index =
+  int index =
       lines.indexWhere((element) => element.contains('];'), indexStartNavClass);
   if (lines[index].trim() != '];') {
     lines[index] = lines[index].replaceAll('];', '');
@@ -36,7 +37,7 @@ Future<void> addNavigation(String name) async {
 
   lines.insert(index, '''    GetPage(
       name: Routes.${name.snakeCase.toUpperCase()},
-      page: () => ${name.pascalCase}Endpoint(),
+      page: () => ${name.pascalCase}Screen(),
       binding: ${name.pascalCase}ControllerBinding(),
     ),    ''');
 

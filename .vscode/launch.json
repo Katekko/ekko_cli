@@ -10,6 +10,8 @@
             "args": [
                 "create",
                 "screen:home",
+                "on",
+                "home",
             ],
             "console": "debugConsole",
         }

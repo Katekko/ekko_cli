@@ -9,13 +9,13 @@ class VersionCommand extends Command {
   String get hint => 'Shows the current CLI version';
 
   @override
+  bool validate() => true;
+
+  @override
   Future<void> execute() async {
     final f = File('pubspec.yaml');
     var text = await f.readAsString();
     Map yaml = loadYaml(text);
     LogService.info('V ${yaml['version']}');
   }
-
-  @override
-  bool validate() => true;
 }

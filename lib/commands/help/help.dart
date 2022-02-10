@@ -7,13 +7,7 @@ class HelpCommand extends Command {
   String get hint => 'Show this help';
 
   @override
-  Future<void> execute() async {
-    final commandsHelp = _getCommandsHelp(commands, 0);
-    LogService.info('''
-List available commands:
-$commandsHelp
-''');
-  }
+  bool validate() => true;
 
   String _getCommandsHelp(Map commands, int index) {
     var result = '';
@@ -31,5 +25,11 @@ $commandsHelp
   }
 
   @override
-  bool validate() => true;
+  Future<void> execute() async {
+    final commandsHelp = _getCommandsHelp(commands, 0);
+    LogService.info('''
+List available commands:
+$commandsHelp
+''');
+  }
 }

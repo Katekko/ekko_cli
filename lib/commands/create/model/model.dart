@@ -9,6 +9,12 @@ import 'samples/model.sample.dart';
 
 class CreateModelCommand extends Command with CreateMixin {
   @override
+  String get hint => 'Create a new screen with binding and routes';
+
+  @override
+  bool validate() => true;
+
+  @override
   Future<void> execute() async {
     final splitName = EkkoCli.arguments[2].split(':');
     final on = EkkoCli.arguments.length == 5 ? EkkoCli.arguments[4] : null;
@@ -37,10 +43,4 @@ class CreateModelCommand extends Command with CreateMixin {
       );
     }
   }
-
-  @override
-  String get hint => 'Create a new screen with binding and routes';
-
-  @override
-  bool validate() => true;
 }

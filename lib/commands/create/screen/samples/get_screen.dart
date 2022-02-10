@@ -1,31 +1,36 @@
 import 'package:ekko_cli/core/sample.dart';
+import 'package:recase/recase.dart';
 
 class GetScreenSample extends Sample {
   final String _screenDir;
-  final String _screenName;
   final String _controllerName;
-  final String _controllerImport;
+  final String _on;
+  final String _name;
 
   GetScreenSample({
-    required String screenName,
     required String screenDir,
     required String controllerName,
-    required String controllerImport,
+    required String on,
+    required String name,
   })  : _screenDir = screenDir,
         _controllerName = controllerName,
-        _controllerImport = controllerImport,
-        _screenName = screenName;
+        _on = on,
+        _name = name;
 
-  String get _controller => 'GetView<$_controllerName>';
+  String get _screenName => '${_name.pascalCase}Screen';
+
+  @override
+  bool get overwrite => false;
+
+  @override
+  String get path => _screenDir;
 
   @override
   String get content {
     return '''import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import '../widgets/$_on/initial.widget.dart';
 
-import '$_controllerImport';
-
-class $_screenName extends $_controller {
+class $_screenName extends ViewController<I$_controllerName> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,21 +38,10 @@ class $_screenName extends $_controller {
         title: Text('$_screenName'),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text(
-          '$_screenName is working', 
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+      body: Center(child: InitialWidget()),
     );
   }
 }
 ''';
   }
-
-  @override
-  bool get overwrite => false;
-
-  @override
-  String get path => _screenDir;
 }

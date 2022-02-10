@@ -7,6 +7,6 @@ mixin CreateMixin {
   String get on => EkkoCli.arguments[4];
 
   String get name {
-    return _args[2].split(':')[1];
+    return _args[1].split(':')[1];
   }
 }

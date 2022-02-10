@@ -8,11 +8,8 @@
             "type": "dart",
             "program": "bin/ekko.dart",
             "args": [
-                "app",
                 "create",
-                "model:user",
-                "on",
-                "user"
+                "screen:home",
             ],
             "console": "debugConsole",
         }

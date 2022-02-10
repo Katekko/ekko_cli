@@ -13,7 +13,7 @@ import 'samples/get_screen.dart';
 class CreateScreenCommand extends Command with CreateMixin {
   @override
   Future<void> execute() async {
-    var split = EkkoCli.arguments[2].split(':');
+    var split = EkkoCli.arguments[1].split(':');
     var hasScreenName = split.length == 2;
     if (hasScreenName) {
       var baseFolderPresentation = 'lib/presentation/${name.snakeCase}';

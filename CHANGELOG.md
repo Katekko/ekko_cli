@@ -1,3 +1,7 @@
+## 0.4.0
+Refactoring all the CLI to match the new architeture
+```ekko create screen:<name> on <local>``` 
+
 ## 0.3.0
 Adding creating model
 ```ekko app create model:<ModelName> on <DomainName>``` 

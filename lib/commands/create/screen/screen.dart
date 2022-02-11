@@ -6,8 +6,9 @@ import 'package:recase/recase.dart';
 
 import 'functions/add_route.dart';
 import 'samples/get_binding.dart';
-import 'samples/get_controller.dart';
+import 'samples/controller.dart';
 import 'samples/get_screen.dart';
+import 'samples/widgets.dart';
 
 class CreateScreenCommand extends Command with CreateMixin {
   @override
@@ -74,6 +75,11 @@ class CreateScreenCommand extends Command with CreateMixin {
       fileName: controllerName,
       on: on,
       name: name,
+    ).create();
+
+    await WidgetsSample(
+      path: widgetsDir,
+      controllerName: controllerName,
     ).create();
 
     // await addRoute(name);

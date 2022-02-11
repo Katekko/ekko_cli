@@ -29,6 +29,7 @@ class GetScreenSample extends Sample {
   String get content {
     return '''import 'package:flutter/material.dart';
 import '../widgets/$_on/initial.widget.dart';
+import '../../shared/view_controller.interface.dart';
 
 class $_screenName extends ViewController<I$_controllerName> {
   @override

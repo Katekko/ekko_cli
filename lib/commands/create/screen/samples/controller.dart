@@ -21,6 +21,8 @@ class ControllerSample extends Sample {
 
 class $_fileName implements I$_fileName {
   //TODO: Implement $_fileName
+
+  final katekko = 'katekko';
 }
 ''';
 

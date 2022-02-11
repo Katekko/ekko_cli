@@ -5,7 +5,7 @@ import 'package:ekko_cli/core/functions/add_export.dart';
 import 'package:recase/recase.dart';
 
 import 'functions/add_route.dart';
-import 'samples/get_binding.dart';
+import 'samples/binding.dart';
 import 'samples/controller.dart';
 import 'samples/get_screen.dart';
 import 'samples/widgets.dart';
@@ -48,7 +48,6 @@ class CreateScreenCommand extends Command with CreateMixin {
     final widgetsDir = '$widgets/initial.widget.dart';
 
     final screensExportsDir = '$screens/screens.dart';
-    final controllersExportsDir = '$controllers/controllers.dart';
 
     final controllerBindingDir =
         'lib/infrastructure/navigation/bindings/controllers/${name.snakeCase}_controller.binding.dart';
@@ -67,7 +66,7 @@ class CreateScreenCommand extends Command with CreateMixin {
 
     await addExport(
       path: 'lib/presentation/screens.dart',
-      line: 'export \'${on.snakeCase}/screens/screens.dart\';',
+      line: 'export \'$screensExportsDir\';',
     );
 
     await ControllerSample(
@@ -82,20 +81,25 @@ class CreateScreenCommand extends Command with CreateMixin {
       controllerName: controllerName,
     ).create();
 
-    // await addRoute(name);
+    await addRoute(name);
 
-    // await BindingSample(
-    //   path: controllerBindingDir,
-    //   bindingName: controllerBindingName,
-    //   controllerName: controllerName,
-    //   controllerImport:
-    //       './../../../../presentation/${name.snakeCase}/controllers/${name.snakeCase}.controller.dart',
-    // ).create();
+    await BindingSample(
+      path: controllerBindingDir,
+      bindingName: controllerBindingName,
+      controllerName: controllerName,
+      controllerImport:
+          '../../../../presentation/home/controllers/controllers.dart',
+    ).create();
 
-    // await addExport(
-    //   path:
-    //       'lib/infrastructure/navigation/bindings/controllers/controllers_bindings.dart',
-    //   line: '''export '${name.snakeCase}.controller.binding.dart';''',
-    // );
+    await addExport(
+      path: '$controllers/controllers.dart',
+      line: 'export \'${name.snakeCase}.controller.dart\';',
+    );
+
+    await addExport(
+      path:
+          'lib/infrastructure/navigation/bindings/controllers/controllers_bindings.dart',
+      line: '''export '${name.snakeCase}_controller.binding.dart';''',
+    );
   }
 }

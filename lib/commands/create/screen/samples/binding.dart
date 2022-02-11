@@ -25,10 +25,12 @@ import '$_controllerImport';
 class $_bindingName extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<${_controllerName.pascalCase}>(
-      () => ${_controllerName.pascalCase}(),
-    );
+    Get.lazyPut<I${_controllerName.pascalCase}>(makeController);
   }
+}
+
+IHomeController makeController() {
+  return HomeController();
 }
 ''';
 

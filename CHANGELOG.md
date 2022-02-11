@@ -1,3 +1,6 @@
+## 0.4.0+1
+Fixing the way to create the screen
+
 ## 0.4.0
 Refactoring all the CLI to match the new architeture
 ```ekko create screen:<name> on <local>``` 

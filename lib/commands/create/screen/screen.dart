@@ -1,4 +1,5 @@
 import 'package:ekko_cli/commands/create/create.dart';
+import 'package:ekko_cli/commands/create/screen/samples/controller_interface.dart';
 import 'package:ekko_cli/common/utils/logger/logger.dart';
 import 'package:ekko_cli/core/command.dart';
 import 'package:ekko_cli/core/functions/add_export.dart';
@@ -85,8 +86,8 @@ class CreateScreenCommand extends Command with CreateMixin {
       path: controllerBindingDir,
       bindingName: controllerBindingName,
       controllerName: controllerName,
-      controllerImport:
-          '../../../../presentation/home/controllers/controllers.dart',
+      name: name,
+      on: on,
     ).create();
 
     await addExport(
@@ -99,5 +100,11 @@ class CreateScreenCommand extends Command with CreateMixin {
           'lib/infrastructure/navigation/bindings/controllers/controllers_bindings.dart',
       line: '''export '${name.snakeCase}_controller.binding.dart';''',
     );
+
+    await ControllerInterfaceSample(
+      path:
+          'lib/domain/core/abstractions/presentation/controllers/$on/${name.snakeCase}_controller.interface.dart',
+      fileName: 'I${name.pascalCase}Controller',
+    ).create();
   }
 }

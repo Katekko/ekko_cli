@@ -17,20 +17,22 @@ class ControllerSample extends Sample {
         _name = name;
 
   @override
+  bool get overwrite => false;
+
+  @override
+  String get path => _path;
+
+  @override
   String get content =>
-      '''import 'lib/domain/core/abstractions/presentation/$_on/${_name.snakeCase}_controller.interface.dart';
+      '''import '../../../domain/core/abstractions/presentation/controllers/$_on/${_name.snakeCase}_controller.interface.dart';
 
 class $_fileName implements I$_fileName {
   //TODO: Implement $_fileName
 
   final _katekko = 'katekko';
+
+  @override
   String get katekko => _katekko;
 }
 ''';
-
-  @override
-  bool get overwrite => false;
-
-  @override
-  String get path => _path;
 }

@@ -13,6 +13,7 @@ class WidgetsSample extends Sample {
   @override
   String get content => '''import 'package:flutter/material.dart';
 
+import '../../../../domain/core/abstractions/presentation/controllers/categories/category_details_controller.interface.dart';
 import '../../../shared/view_controller.interface.dart';
 
 class InitialWidget extends ViewController<I$_controllerName> {

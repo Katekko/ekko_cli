@@ -4,18 +4,21 @@ import 'package:recase/recase.dart';
 class BindingSample extends Sample {
   final String _path;
   final String _controllerName;
-  final String _controllerImport;
   final String _bindingName;
+  final String _name;
+  final String _on;
 
   BindingSample({
     required String path,
     required String controllerName,
-    required String controllerImport,
     required String bindingName,
+    required String name,
+    required String on,
   })  : _path = path,
         _controllerName = controllerName,
-        _controllerImport = controllerImport,
-        _bindingName = bindingName;
+        _bindingName = bindingName,
+        _on = on,
+        _name = name;
 
   @override
   bool get overwrite => false;
@@ -26,7 +29,8 @@ class BindingSample extends Sample {
   @override
   String get content => '''import 'package:get/get.dart';
 
-import '$_controllerImport';
+import '../../../../domain/core/abstractions/presentation/controllers/$_on/${_name.snakeCase}_controller.interface.dart';
+import '../../../../presentation/$_on/controllers/controllers.dart';
 
 class $_bindingName extends Bindings {
   @override
@@ -36,7 +40,7 @@ class $_bindingName extends Bindings {
 }
 
 I${_controllerName.pascalCase} makeController() {
-  return HomeController();
+  return ${_controllerName.pascalCase}();
 }
 ''';
 }

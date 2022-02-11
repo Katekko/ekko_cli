@@ -35,11 +35,11 @@ import '../../../../presentation/$_on/controllers/controllers.dart';
 class $_bindingName extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<I${_controllerName.pascalCase}>(makeController);
+    Get.lazyPut<I${_controllerName.pascalCase}>(make${_controllerName.pascalCase});
   }
 }
 
-I${_controllerName.pascalCase} makeController() {
+I${_controllerName.pascalCase} make${_controllerName.pascalCase}() {
   return ${_controllerName.pascalCase}();
 }
 ''';

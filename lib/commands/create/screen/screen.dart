@@ -7,6 +7,7 @@ import 'package:recase/recase.dart';
 
 import 'functions/add_route.dart';
 import 'samples/binding.dart';
+import 'samples/binding_test.dart';
 import 'samples/controller.dart';
 import 'samples/screen.dart';
 import 'samples/widgets.dart';
@@ -105,6 +106,12 @@ class CreateScreenCommand extends Command with CreateMixin {
       path:
           'lib/domain/core/abstractions/presentation/controllers/$on/${name.snakeCase}_controller.interface.dart',
       fileName: 'I${name.pascalCase}Controller',
+    ).create();
+
+    await BindingTestSample(
+      path:
+          'test/infrastructure/navigation/bindings/controllers/${name.snakeCase}_controller_binding_test.dart',
+      name: name.pascalCase,
     ).create();
   }
 }

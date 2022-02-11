@@ -4,7 +4,7 @@ import 'package:ekko_cli/common/utils/logger/logger.dart';
 import 'package:ekko_cli/core/functions/replace_as_expected.dart';
 import 'package:recase/recase.dart';
 
-import '../samples/get_navigation.dart';
+import '../samples/navigation.dart';
 
 Future<void> addNavigation(String name) async {
   File navigationFile = File(

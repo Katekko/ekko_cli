@@ -3,7 +3,6 @@ import 'package:recase/recase.dart';
 
 class GetScreenSample extends Sample {
   final String _screenDir;
-  final String _controllerName;
   final String _on;
   final String _name;
 
@@ -13,7 +12,6 @@ class GetScreenSample extends Sample {
     required String on,
     required String name,
   })  : _screenDir = screenDir,
-        _controllerName = controllerName,
         _on = on,
         _name = name;
 
@@ -28,15 +26,16 @@ class GetScreenSample extends Sample {
   @override
   String get content {
     return '''import 'package:flutter/material.dart';
-import '../widgets/$_on/initial.widget.dart';
-import '../../shared/view_controller.interface.dart';
 
-class $_screenName extends ViewController<I$_controllerName> {
+import '../widgets/$_on/initial.widget.dart';
+
+//TODO: Implement $_screenName
+class $_screenName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('$_screenName'),
+        title: const Text('$_screenName'),
         centerTitle: true,
       ),
       body: Center(child: InitialWidget()),

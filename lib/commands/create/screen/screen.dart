@@ -7,7 +7,7 @@ import 'package:recase/recase.dart';
 import 'functions/add_route.dart';
 import 'samples/binding.dart';
 import 'samples/controller.dart';
-import 'samples/get_screen.dart';
+import 'samples/screen.dart';
 import 'samples/widgets.dart';
 
 class CreateScreenCommand extends Command with CreateMixin {
@@ -45,9 +45,7 @@ class CreateScreenCommand extends Command with CreateMixin {
 
     final screenDir = '$screens/${name.snakeCase}.screen.dart';
     final controllerDir = '$controllers/${name.snakeCase}.controller.dart';
-    final widgetsDir = '$widgets/initial.widget.dart';
-
-    final screensExportsDir = '$screens/screens.dart';
+    final widgetsDir = '$widgets/$on/initial.widget.dart';
 
     final controllerBindingDir =
         'lib/infrastructure/navigation/bindings/controllers/${name.snakeCase}_controller.binding.dart';
@@ -66,7 +64,7 @@ class CreateScreenCommand extends Command with CreateMixin {
 
     await addExport(
       path: 'lib/presentation/screens.dart',
-      line: 'export \'$screensExportsDir\';',
+      line: 'export \'${on.snakeCase}/screens/screens.dart\';',
     );
 
     await ControllerSample(

@@ -18,6 +18,12 @@ class BindingSample extends Sample {
         _bindingName = bindingName;
 
   @override
+  bool get overwrite => false;
+
+  @override
+  String get path => _path;
+
+  @override
   String get content => '''import 'package:get/get.dart';
 
 import '$_controllerImport';
@@ -29,14 +35,8 @@ class $_bindingName extends Bindings {
   }
 }
 
-IHomeController makeController() {
+I${_controllerName.pascalCase} makeController() {
   return HomeController();
 }
 ''';
-
-  @override
-  bool get overwrite => false;
-
-  @override
-  String get path => _path;
 }

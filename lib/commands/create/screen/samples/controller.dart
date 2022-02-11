@@ -1,4 +1,5 @@
 import 'package:ekko_cli/core/sample.dart';
+import 'package:recase/recase.dart';
 
 class ControllerSample extends Sample {
   final String _path;
@@ -17,12 +18,13 @@ class ControllerSample extends Sample {
 
   @override
   String get content =>
-      '''import 'lib/domain/core/abstractions/presentation/$_on/${_name}_controller.interface.dart';
+      '''import 'lib/domain/core/abstractions/presentation/$_on/${_name.snakeCase}_controller.interface.dart';
 
 class $_fileName implements I$_fileName {
   //TODO: Implement $_fileName
 
-  final katekko = 'katekko';
+  final _katekko = 'katekko';
+  String get katekko => _katekko;
 }
 ''';
 

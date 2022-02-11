@@ -5,7 +5,7 @@ import 'package:ekko_cli/core/functions/replace_as_expected.dart';
 import 'package:ekko_cli/core/functions/routes_sort.dart';
 import 'package:recase/recase.dart';
 
-import '../samples/get_routes.dart';
+import '../samples/routes.dart';
 import 'add_navigation.dart';
 
 Future<void> addRoute(String nameRoute) async {
